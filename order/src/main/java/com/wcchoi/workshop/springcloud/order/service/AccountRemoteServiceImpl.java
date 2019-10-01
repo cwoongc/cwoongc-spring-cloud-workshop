@@ -13,6 +13,9 @@ public class AccountRemoteServiceImpl implements AccountRemoteService {
 
     @Autowired private RestTemplate restTemplate;
 
+//    private final String orderAccountsUrl = "http://localhost:8082/accounts/%d/%d";
+    private final String orderAccountsUrl = "http://account/accounts/%d/%d";
+
 
     /**
      * https://github.com/Netflix/Hystrix/wiki/Configuration
@@ -32,10 +35,10 @@ public class AccountRemoteServiceImpl implements AccountRemoteService {
             },
 
             threadPoolProperties = {
-                @HystrixProperty(name = "allowMaximumSizeToDivergeFromCoreSize", value = "true"),
-                @HystrixProperty(name = "maximumSize", value = "20"),
+//                @HystrixProperty(name = "allowMaximumSizeToDivergeFromCoreSize", value = "true"),
+//                @HystrixProperty(name = "maximumSize", value = "20"),
                 @HystrixProperty(name = "coreSize", value = "10"),
-                @HystrixProperty(name = "keepAliveTimeInMinutes", value = "2"),
+//                @HystrixProperty(name = "keepAliveTimeInMinutes", value = "2"),
 
                 @HystrixProperty(name = "queueSizeRejectionThreshold", value = "15"),
                 @HystrixProperty(name = "maxQueueSize", value = "101"),
@@ -50,7 +53,7 @@ public class AccountRemoteServiceImpl implements AccountRemoteService {
         Long[] orderAccountsNo = getOrderAccountsNo(orderNo);
 
         return restTemplate.getForObject(
-                URI.create(String.format("http://localhost:8082/accounts/%d/%d",orderAccountsNo[0],orderAccountsNo[1]))
+                URI.create(String.format(orderAccountsUrl,orderAccountsNo[0],orderAccountsNo[1]))
                 , String.class
         );
     }

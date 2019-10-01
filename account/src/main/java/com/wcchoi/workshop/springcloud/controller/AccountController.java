@@ -11,20 +11,22 @@ public class AccountController {
 
     @GetMapping("/{marketAccountNo}/{exchangeAccountNo}")
     public String getAccounts(@PathVariable Long marketAccountNo, @PathVariable Long exchangeAccountNo) {
-        throw new RuntimeException("Test Exception");
+//        throw new RuntimeException("Test Exception");
+
 //        try {
 //            Thread.sleep(2000);
 //        } catch (InterruptedException e) {
 //            e.printStackTrace();
 //        }
 //
-//        return String.format("{\"marketAccount\":{\"no\":%d, \"currency\":%s}, \"exchangeAccount\":{\"no\":%d, \"currency\":%s}, \"time\":\"%s\"}}"
-//                ,marketAccountNo
-//                ,getCurrency(marketAccountNo)
-//                ,exchangeAccountNo
-//                ,getCurrency(exchangeAccountNo)
-//                ,System.currentTimeMillis()
-//        );
+
+        return String.format("{\"marketAccount\":{\"no\":%d, \"currency\":%s}, \"exchangeAccount\":{\"no\":%d, \"currency\":%s}, \"time\":\"%s\"}}"
+                ,marketAccountNo
+                ,getCurrency(marketAccountNo)
+                ,exchangeAccountNo
+                ,getCurrency(exchangeAccountNo)
+                ,System.currentTimeMillis()
+        );
     }
 
     private String getCurrency(Long accountNo) {
