@@ -4,5 +4,7 @@ plugins {
 
 dependencies {
     compile project(':order')
-//    compile project(':account')
+    compile project(':account')
+    compile project(':eureka')
+
 }

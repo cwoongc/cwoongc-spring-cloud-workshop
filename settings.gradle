@@ -2,3 +2,4 @@ rootProject.name = 'cwoongc-spring-cloud-workshop'
 
 include 'order'
 include 'account'
+include 'eureka'
