@@ -20,6 +20,8 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.cloud:spring-cloud-starter-netflix-hystrix'
     implementation 'org.springframework.cloud:spring-cloud-starter-netflix-ribbon'
+//    spring-retry 가 추가되면 netflix-ribbon의 retry가 동작하면서 장애난 서버에 요청실패해도 다른 서버로 retry하면서 성공한 결과만 반환된다.
+    implementation 'org.springframework.retry:spring-retry'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
