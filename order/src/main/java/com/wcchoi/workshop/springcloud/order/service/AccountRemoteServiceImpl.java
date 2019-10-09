@@ -14,7 +14,8 @@ public class AccountRemoteServiceImpl implements AccountRemoteService {
     @Autowired private RestTemplate restTemplate;
 
 //    private final String orderAccountsUrl = "http://localhost:8082/accounts/%d/%d";
-    private final String orderAccountsUrl = "http://account/accounts/%d/%d";
+    private final String TARGET_SERVICE_NAME = "account";
+    private final String orderAccountsUrl = "http://" + TARGET_SERVICE_NAME + "/accounts/%d/%d";
 
 
     /**
