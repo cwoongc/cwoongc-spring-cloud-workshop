@@ -20,7 +20,8 @@ public class AccountRemoteServiceImpl implements AccountRemoteService {
 
     /**
      * https://github.com/Netflix/Hystrix/wiki/Configuration
-     * @param orderNo
+     * @param marketAccountNo
+     * @param exchangeAccountNo
      * @return
      */
     @HystrixCommand(fallbackMethod = "getOrderAccountsFallback",
@@ -49,24 +50,16 @@ public class AccountRemoteServiceImpl implements AccountRemoteService {
             }
     )
     @Override
-    public String getOrderAccounts(Long orderNo) {
-
-        Long[] orderAccountsNo = getOrderAccountsNo(orderNo);
+    public String getOrderAccounts(Long marketAccountNo, Long exchangeAccountNo) {
 
         return restTemplate.getForObject(
-                URI.create(String.format(orderAccountsUrl,orderAccountsNo[0],orderAccountsNo[1]))
+                URI.create(String.format(orderAccountsUrl, marketAccountNo, exchangeAccountNo))
                 , String.class
         );
     }
 
-    private Long[] getOrderAccountsNo(Long orderNo) {
 
-        Long[] accountsNo = {12345L, 67890L};
-
-        return accountsNo;
-    }
-
-    public String getOrderAccountsFallback(Long orderNo, Throwable t) {
+    public String getOrderAccountsFallback(Long marketAccountNo, Long exchangeAccountNo, Throwable t) {
         System.out.println(String.format(
                 "[%s]%s"
                 ,System.currentTimeMillis()
