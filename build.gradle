@@ -6,5 +6,6 @@ dependencies {
     compile project(':order')
     compile project(':account')
     compile project(':eureka')
-
+    compile project(':zone')
+    compile project(':zuul')
 }
